@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var data1;
+        //typeof - 변수의 타입..
+        document.write("data1 type is "+ typeof data1 + "<br/>")//data1 type is undefined
+
+        data1 = 10
+        document.write("10 data1 type is "+ typeof data1 + "<br/>")//10 data1 type is number
+
+        data1 = "hello"
+        document.write("hello data1 type is "+ typeof data1 + "<br/>")//hello data1 type is string
+        data1 = false;
+        document.write("false data1 type is "+ typeof data1 + "<br/>")//false data1 type is boolean
+        //js 는 정수와 실수를 구분하지 않는다. 모두  number type 이다..
+        data1 = 0.1
+        document.write("0.1 data1 type is "+ typeof data1 + "<br/>")//0.1 data1 type is number
+        //null 은 값이다.. = 연산자에 의해.. 대입되는 값이다..
+        //object 타입.. 객체 타입.. 
+        //null 이라는 것은 object 타입인데.. 실제 객체가 할당되지 않은 상태의 값...
+        data1 = null
+        document.write("null data1 type is "+ typeof data1 + "<br/>")//null data1 type is object
+        
+        //prompt 에 유저가 입력한 데이터는 어떤 타입으로 유추가 되는가? "hello", 10
+        //유저가 입력하지 않고 취소했다면.. ?
+        // data1 = prompt('데이터를 입력해 주세요..')
+        // document.write("prompt data1 type is "+ typeof data1 + "<br/>")
+        //hello -> prompt data1 type is string
+        //10 -> prompt data1 type is string, prompt 에 입력한 데이터는 문자열로 인지..
+        //10을 입력했다고 하더라도 "10" 으로 인지.. 
+        //취소.. => prompt data1 type is object
+        //prompt 는 문자열 데이터를 받는다. 타입이 없지는 않다.. 
+        //취소하면 값이 없다는 의미에서 null 이 대입되고.. 그럼으로 object 타입으로 유추된다..
+
+        //10 + 20
+        document.write("10 + 20 = "+ (10 + 20) + "<br/>")//10 + 20 = 30
+        document.write("10 + 20 = "+ ("10" + 20) + "<br/>") //10 + 20 = 1020
+        //"10" 이 숫자이지만.. "" 로 묶여서 string 타입이다.
+        //string + number => 문자열 연결...
+
+        //boolean 타입이 true/false 가 대입되는 타입인데.. 언어에 따라 약간의 차이는 있다..
+        document.write("Boolean('hello')  : "+ Boolean('hello') + "<br/>")//Boolean('hello') : true
+        document.write("Boolean(0)  : "+ Boolean(0) + "<br/>")//false
+        document.write("Boolean(1)  : "+ Boolean(1) + "<br/>")//true
+        document.write("Boolean(2)  : "+ Boolean(2) + "<br/>")//true
+        document.write("Boolean(-1)  : "+ Boolean(-1) + "<br/>")//true
+        document.write("Boolean(undefined)  : "+ Boolean(undefined) + "<br/>")//false
+        document.write("Boolean(null)  : "+ Boolean(null) + "<br/>")//false
+
+        //js 에서는 다른 언어와 다르게.. 다양한 타입의 데이터(문자열, 숫자등)이 boolean 으로 표현이 되어서
+        //if 문 같은 조건문을 만들때.. 다양한 타입의 데이터에 의해 어떻게 판단이 되는지...
+        //의미상으로 true/false 가 아니더라도 데이터가 있다는 의미는  true, 없다는 의미는 false 로 판단
+        //"hello", 1, -2, 10 ==>true
+        //undefined, null, 0 => false, 0 을 false 로 판단하는 것은 2진법상..
+        
+    </script>
+</body>
+</html>

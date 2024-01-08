@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //test1......................
+    //var.... scope... 
+    //함수 스코프는 지원한다.. 
+    //블록(if, for등) 스코프를 지원하지 않는다..
+    // var name = '홍길동'
+    // function myFun() {
+    //   var name = '김길동'
+    //   document.write('inner fun, top : '+name+'<br/>')//김길동
+    //   if(true){
+    //     var name = '이길동'
+    //     document.write('inner fun, if : '+name+'<br/>')//이길동
+    //   }
+    //   document.write('inner fun, middle : '+name+'<br/>')//이길동
+    //   for(var i =1; i<=1; i++){
+    //     var name = '박길동'
+    //     document.write('inner fun, for : '+name+'<br/>')//박길동
+    //   }
+    //   document.write('inner fun, bottom : '+name+'<br/>')//박길동
+    // }
+    // myFun()
+    // document.write('outer fun : '+name+'<br/>')//홍길동
+
+    //test2.........................
+    //블록 스코프가 지원이 된다..
+    let name = '홍길동'
+    function myFun() {
+      let name = '김길동'
+      document.write('inner fun, top : ' + name + '<br/>')//김길동
+      if (true) {
+        let name = '이길동'
+        document.write('inner fun, if : ' + name + '<br/>')//이길동
+      }
+      document.write('inner fun, middle : ' + name + '<br/>')//김길동
+      for (var i = 1; i <= 1; i++) {
+        let name = '박길동'
+        document.write('inner fun, for : ' + name + '<br/>')//박길동
+      }
+      document.write('inner fun, bottom : ' + name + '<br/>')//김길동
+    }
+    myFun()
+    document.write('outer fun : ' + name + '<br/>')//홍길동
+
+    //동일 스코프내에서 재 선언 불가..
+    // let name = '류현진'
+    // document.write(data)
+    // let data = 10
+
+  </script>
+</body>
+
+</html>

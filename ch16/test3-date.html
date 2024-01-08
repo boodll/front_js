@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //현재시간, 날짜..
+    var date1 = new Date()
+    //Fri Nov 03 2023 13:17:39 GMT+0900 (한국 표준시)
+    document.write('<p>'+date1+'</p>')
+    //2023. 11. 3. 오후 1:18:44
+    document.write('<p>'+date1.toLocaleString()+'</p>')
+
+    //특정 날짜, 시간을 지정해서 객체 생성..
+    var date2 = new Date('2023-10-18T10:10:10')
+    //2023. 10. 18. 오전 10:10:10
+    document.write('<p>'+date2.toLocaleString()+'</p>')
+    var date3 = new Date('2023/10/19')
+    //2023. 10. 19. 오전 12:00:00
+    document.write('<p>'+date3.toLocaleString()+'</p>')
+
+    //년도, 월, 일 등.. 각 데이터를 별개로 지정도 가능..
+    //월을 개별 데이터로 핸들링할때는 꼭 -1을 해주어야 한다..
+    var date4 = new Date(2023, 11, 3, 17, 3, 24, 0)
+    //2023. 12. 3. 오후 5:03:24
+    document.write('<p>'+date4.toLocaleString()+'</p>')
+
+    //두 날짜, 시간이 있다.. 어느게 빠른지.. 느린지..
+    if(date1 > date2){
+      document.write('<p> date1 is greater than date2</p>')
+    }
+
+    //두 날짜의 차이.. 계산..
+    //날짜시간은.. 1970년1월1일부터의 지난시간에 대한 밀리세컨드초(이걸 흔히 timpstamp 값)를 유지해서 계산해서 
+    //표현한다..
+    //각 date 가 timestamp 값을 획득해서 계산하면 된다..
+    var date1Time = date1.getTime()
+    var date2Time = date2.getTime()
+    var passedTime = date1Time - date2Time
+    //반올림 할려고.. 원하면 버림, 올림도 다 되고..
+    var result = Math.round(passedTime/(1000 * 60 * 60 * 24))
+    document.write('<p>'+result+'</p>')//16
+  </script>
+</body>
+</html>

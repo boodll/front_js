@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //string template... 문자열 내에 동적 데이터를 조금 쉽게 추가할 수 있는 기법..
+    function plus(no1, no2){
+      return no1 + no2
+    }
+    let data1 = 'kim'
+    document.write('<p>data1, plus(10, 20)</p>')//data1, plus(10, 20)
+    document.write('<p>'+data1+','+plus(10,20)+'</p>')//kim,30
+    //string template 을 표현하려면 전체 문자열을 back tick 으로 묶어야 하고..
+    //그 안에 동적데이터(변수, 함수 호출 결과등)을 ${} 로 표현..
+    //${} 에 추가될 수 있는 구문은.. 표현식, 결과가 나오는 구문.. 
+    document.write(`<p>${data1}, ${10 + 20}, ${plus(10, 20)}</p>`)
+    
+    //객체 생성.. 
+    let user = {
+      name: 'kim',
+      major : 'computer science'
+    }
+
+    //객체 프로퍼티 읽기.. 
+    document.write(`<p> ${user.name}, ${user['major']} </p>`)//kim, computer science
+
+    //객체의 프로퍼티 값 갱신..
+    user.major = 'electronic engineering'
+    //kim, electronic engineering, undefined
+    document.write(`<p> ${user.name}, ${user['major']}, ${user.sub}</p>`)
+
+    //외부에서(객체 선언 부분이 아닌) 동적으로 객체의 프로퍼티 추가..
+    user.sub = 'computer engineering'
+    //kim, electronic engineering, computer engineering
+    document.write(`<p> ${user.name}, ${user['major']}, ${user.sub}</p>`)
+
+    //객체 프로퍼티 삭제..
+    delete user.major
+    //kim, undefined, computer engineering
+    document.write(`<p> ${user.name}, ${user['major']}, ${user.sub}</p>`)
+
+    //객체가 데이터 여러건을 표현하는 경우로 많이 이용이 되어서.. 
+    //전체 데이터를 한꺼번에 핸들링하는 경우가 많다..
+    //in 범위 연산자를 이용해 for 문으로 이용... 
+    //user 의 프로퍼티 갯수만큼 loop
+    //한번 실행될 때마다 추출되어 prop 에 전달되는 것은.. 
+    //프로퍼티 값이 아니라.. 프로퍼티 이름이다..
+    //프로퍼티가 아니라.. 프로퍼티 이름(문자열) 
+    //in 을 이용하는 경우, 프로퍼티의 값을 얻고자 한다면.. user['prop']
+    for(let prop in user){
+      document.write(`<p> ${prop}, ${user.prop}, ${user[prop]}</p>`)
+    }
+  </script>
+</body>
+</html>

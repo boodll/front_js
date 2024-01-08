@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 300px;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+  <h3>event 등록 방법</h3>
+  <div id="container">
+    <img src="images/cup-1.png" id="cup"/>
+  </div>
+  <!-- html 태그에서 직접 onxxx 속성으로 이벤트 콜백(이벤트 발생시에 호출될 함수)를 지정 -->
+  <button onclick="eventFun()">event 1</button>
+  <button id="button2">event 2</button>
+  <button id="button3">event 3</button>
+
+  <script>
+    function eventFun(){
+      let cup = document.getElementById('cup')
+      let origin = cup.getAttribute('src')
+      if(origin === 'images/cup-1.png'){
+        cup.setAttribute('src', 'images/cup-2.png')
+      }else {
+        cup.setAttribute('src', 'images/cup-1.png')
+      }
+    }
+    //방법 2 - js 에서 dom node 에 이벤트 콜백함수 지정.. 
+    let button2 = document.getElementById('button2')
+    button2.onclick = eventFun
+
+    //방법3 - addEventListener 이용.. 
+    let button3 = document.getElementById('button3')
+    button3.addEventListener('click', eventFun)
+  </script>
+
+  <h3>event 객체</h3>
+  <div style="width: 200px; height: 200px; background-color: red;" id="test1"></div>
+  <script>
+    let test1 = document.getElementById('test1')
+    //이벤트 콜백함수가 호출되면서 첫번째 매개변수로 이벤트 정보를 가지는 객체가 전달.
+    //꼭 이용해야 하는 것은 아니고.. 이벤트 정보를 활용하는 경우에만.. 
+    test1.addEventListener('click', function(e){
+      console.log("client", e.clientX, e.clientY)
+      console.log("page", e.pageX, e.pageY)
+      console.log('screen', e.screenY, e.screenY)
+    })
+  </script>
+
+  <h3>target 정보..</h3>
+  <p>이벤트 콜백함수에서 현재 이벤트가 발생한 dom node 를 획득..</p>
+  <ul>
+    <li id="item1">item1</li>
+    <li id="item2">item2</li>
+    <li id="item3">item3</li>
+  </ul>
+  <ul id="list1">
+    <li>item4</li>
+    <li>item5</li>
+    <li>item6</li>
+  </ul>
+  <script>
+    //태그가 중복되어 있는 경우이다.. 
+    let item1 = document.getElementById('item1')
+    item1.addEventListener('click', function(e){
+      //target, 현재 이벤트가 발생한 dom 객체..
+      //현재의 상황에서는 target 과 currentTarget 이 모두 동일 dom node..
+      //이벤트가 발생한 li 태그가 지칭된다..
+      console.log('item1 target', e.target)
+      console.log('item1 currentTarget', e.currentTarget)
+    })
+
+    let list1 = document.getElementById('list1')
+    //중첩 구조에서 부모에 이벤트를 등록한 것이다..
+    //자식을 클릭했을때.. target 은 클릭한 자식 객체
+    //currentTarget 은 이벤트를 등록한 부모 객체가 된다..
+    list1.addEventListener('click', function(e){
+      console.log('list1 target', e.target)
+      console.log('list1 currentTarget', e.currentTarget)
+
+      //삭제 업무를 추가해 보자..
+      // e.currentTarget.style.visibility = 'hidden'
+      e.target.style.visibility = 'hidden'
+    })
+  </script>
+
+  <h3>캡처링,버블링</h3>
+  <p>부모 자식으로 중복되어 있는 경우, 부모, 자식 모두 이벤트 처리하는 경우
+    부모부터 이벤트 처리가 되면서 자식의 이벤트 처리가 되어야 하는가 - 캡처링,
+    자식부터 이벤트 처리하고 부모의 이벤트가 처리되어야 하는가 - 버블링
+  </p>
+  <div style="width: 300px; height: 300px; background-color: red;" id="div1"></div>
+  <div style="width: 200px; height: 200px; background-color: blue;" id="div2"></div>
+  <div style="width: 100px; height: 100px; background-color: green;" id="div3"></div>
+
+  <script>
+    let div1 = document.getElementById('div1')
+    let div2 = document.getElementById('div2')
+    let div3 = document.getElementById('div3')
+
+    div1.addEventListener('click', function(){
+        console.log('div1 click')
+    },tuer)
+
+    
+    div2.addEventListener('click', function(){
+        console.log('div1 click')
+    },tuer)
+
+    
+    div3.addEventListener('click', function(e){
+        console.log('div1 click')
+        e.stopPropagation()
+    },tuer)
+  </script>
+</body>
+</html>

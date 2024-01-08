@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #result {
+      width: 500px;
+      height: 300px;
+      margin: 30px auto;
+      border: 2px solid #ccc;
+      border-radius: 15px;
+    }
+  </style>
+  <script>
+    //아래의 dom node 접근도 #result 가 로딩되지 않은상태에서 접근한다면.. 분명..
+    //null 이고 에러이다..
+    //html 에서 이벤트를 걸었다.. 유저가 클릭했다는 것은 이미 로딩이 완료되었다는 이야기다.
+    //그래서 에러가 나지 않은 것일뿐..
+    function changeColor(color) {
+      var result = document.querySelector('#result')
+      result.style.backgroundColor = color
+    }
+
+    //html 이 모두 로딩되지 않은 상태에서.. 이 코드는 실행된다.. 
+    //현재 아래라인이 실행될 때는 #a1 태그가 로딩이 안된 상태다.. 없다..
+    //브라우저에서 html 문서를 로딩 완료한 순간의 이벤트.. 
+    //모든 태그의 dom node 가 만들어진 순간..
+    window.onload = function () {
+      var a1Node = document.querySelector('#a1')
+      //Cannot set properties of null (setting 'onclick')
+      a1Node.onclick = function () {
+        changeColor('red')
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <ul>
+    <li><a href="#" onclick="
+        //이 영역은 이벤트를 처리하는 이벤트 핸들러 부분이 된다..
+        //즉 js 영역이 된다..
+        //원한다면 이렇게 html 태그내에.. 이벤트 처리 알고리즘을 직접 담아도 된다..
+        //간단한 처리는 할 수 있기는 하지만.. html 내에 너무 많은 js 코드가 들어감으로
+        //권장할만 하지는 못하다..
+        let result = 10 + 20
+        alert(result)
+      ">event1</a></li>
+    <!-- event handler 를 js 영역에 별도의 함수로 선언하고..
+      이벤트 발생시에 그 함수를 호출한 것 뿐이다..
+      이벤트와 이벤트 발생시에 호출될 handler 를 연결시켜야 하는데.. 이 연결을 
+    html 태그에서 onclick 속성으로 직접 한것이다.. -->
+    <li><a href="#" onclick="changeColor('orange')">event2</a></li>
+    <li><a href="#" onclick='changeColor("blue")'>event3</a></li>
+    <!-- 태그와 event handler 연결되어야 하는데.. 이를 js 에서 연결..  -->
+    <li><a href="#" id="a1">event4</a></li>
+  </ul>
+  <div id="result"></div>
+</body>
+
+</html>

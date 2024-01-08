@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var no = prompt('2 이상의 숫자를 입력하세요')
+    var message=''
+    if(no !== null){
+      if(no > 1){
+        //2부터 숫자를 증가시켜서.. 나누어 본다..
+        var divisor = 2
+        //증가시켜서..
+        message = no + '는 소수입니다.'
+        while(divisor < no){
+          //나눠서.. 나머지 값이 0인지.. 아닌지.. 
+          if(no % divisor === 0){
+            message = no + '는 소수가 아닙니다.'
+            break;
+          }else {
+            divisor++
+          }
+        }
+      }else {
+        message = '2 이상의 숫자를 입력해야해..'
+      }
+    }else {
+      message = '입력하지 않았어..'
+    }
+    document.write(message)
+  </script>
+</body>
+</html>

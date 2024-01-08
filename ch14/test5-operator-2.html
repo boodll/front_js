@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var data1 = 10
+    var data2 = 10
+    document.write('data1==data2 : '+ (data1 == data2) +'<br/>')//true
+    document.write('data1!=data2 : '+ (data1 != data2) +'<br/>')//false
+    document.write('data1===data2 : '+ (data1 === data2) +'<br/>')//true
+    document.write('data1!==data2 : '+ (data1 !== data2) +'<br/>')//false
+
+    document.write('<hr/>')
+
+    //타입이 다른 경우의 비교..
+    data2 = '10'
+    //== 타입이 다른경우 타입을 변형시켜서 비교.. 
+    document.write('data1==data2 : '+ (data1 == data2) +'<br/>')//true
+    document.write('data1!=data2 : '+ (data1 != data2) +'<br/>')//false
+    //=== 타입 변형하지 않는다. 타입이 다르면 false 다..
+    document.write('data1===data2 : '+ (data1 === data2) +'<br/>')//false
+    document.write('data1!==data2 : '+ (data1 !== data2) +'<br/>')//true
+
+    document.write('<hr/>')
+
+    data1 = true
+    data2 = 0
+    document.write('data1==data2 : '+ (data1 == data2) +'<br/>')//false
+    document.write('data1!=data2 : '+ (data1 != data2) +'<br/>')//true
+    document.write('data1===data2 : '+ (data1 === data2) +'<br/>')//false
+    document.write('data1!==data2 : '+ (data1 !== data2) +'<br/>')//true
+
+    document.write('<hr/>')
+
+    data1 = true
+    data2 = 1
+    document.write('data1==data2 : '+ (data1 == data2) +'<br/>')//true
+    document.write('data1!=data2 : '+ (data1 != data2) +'<br/>')//false
+    document.write('data1===data2 : '+ (data1 === data2) +'<br/>')//false
+    document.write('data1!==data2 : '+ (data1 !== data2) +'<br/>')//true
+
+    document.write('<hr/>')
+
+    data1 = true
+    data2 = false
+    document.write('data1 && data2 : '+ (data1 && data2) +'<br/>')//false
+    document.write('data1 || data2 : '+ (data1 || data2) +'<br/>')//true
+    document.write('!data1 : '+ (!data1) +'<br/>')//false
+  </script>
+</body>
+</html>

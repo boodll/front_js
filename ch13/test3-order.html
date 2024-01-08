@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+      var a1 = document.querySelector('#a1');
+      a1.onclick = function() {
+        a1.style.color = 'red';
+      }  
+    </script>
+</head>
+<body>
+    <h1 id="a1">첫번째 영역</h1>
+    <script>
+        var a2 = document.querySelector('#a2');
+        a2.onclick = function() {
+          a2.style.color = 'red';
+        }  
+      </script>
+    <h1 id="a2">두번째 영역</h1>
+    <h1 id="a3">세번째 영역</h1>
+
+    <script>
+        var a3 = document.querySelector('#a3');
+        a3.onclick = function() {
+          a3.style.color = 'green';
+        }  
+      </script>
+</body>
+</html>

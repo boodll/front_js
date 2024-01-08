@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var data1 = 10
+    function myFun1() {
+      var data2 = 20
+      //함수 내에서 전역변수, 지역변수 모두 이용 가능..
+      document.write('in function : ' + data1 + ', ' +  data2+'<br/>')
+    }
+    myFun1()
+    //error.... data2 is not defined
+    //지역변수는 그 함수내에서만 사용가능..
+    // document.write('out function : ' + data1 + ', ' +  data2+'<br/>')
+
+    function outerFun(){
+      function innerFun(){
+        document.write('innerFun()...<br/>')
+      }
+      innerFun()
+    }
+    outerFun()//ok...
+    //error - innerFun is not defined
+    // innerFun()
+
+    //변수 선언하면서 var 을 생략할 수도 있기는 하다..
+    //지역변수라고 하더라도.. var 이 생략되면.. 전역변수 취급이 된다..
+    //권장하지 않는다...
+    //var 생략 자체를.. 
+    sum1 = 10
+    function myFun2() {
+      sum2 = 20
+    }
+    myFun2()
+    document.write(sum1 + ',' + sum2)
+  </script>
+</body>
+</html>

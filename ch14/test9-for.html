@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var no = prompt('1이상의 숫자를 입력 ㄱ')
+
+        if(no !== null){
+            if(no>0){
+                var sum = 0
+                for(var i = 1; i<=no ; i++){
+                    sum += i
+                }
+                document.write('1부터'+sum+'입력1')
+            }else {
+                document.write('1 이상의 숫자 입력 ㄱ')
+            }
+        }else{
+            document.write('입력 x')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    //이벤트를 on+이벤트명 으로 걸수도 있기는 하지만.. 모든 브라우저에서 잘 실행되지만
+    //표준은 아니다..
+    // window.onload = function(){}
+    window.addEventListener('DOMContentLoaded', function(){
+      //버튼 노드 객체 획득.. 
+      //태그로 획득했고 button 태그가 3개 있기는 하지만.. querySelectorAll() 이 아니라
+      //querySelector() 를 사용했다.. 처음 걸리는 하나만 제공한다..
+      let btn1 = document.querySelector('button')
+      let btn2 = btn1.nextElementSibling
+      let btn3 = btn2.nextElementSibling
+
+      btn1.addEventListener('click', function(){
+        let dramas = document.querySelector('#drama')
+        //하위의 첫번째 노드 획득..
+        let firstNode = dramas.firstElementChild
+        if(firstNode){
+          //있다면.. 
+          //문자열 노드를 획득하고.. 그 문자열을 출력한다..
+          let secondNode = firstNode.nextElementSibling
+          if(secondNode){
+            let title = secondNode.firstChild.nodeValue
+            alert(title)
+          }
+        }
+      })
+
+      btn2.addEventListener('click', function(){
+        //태그 노드 생성
+        let newNode = document.createElement('li')
+        //택스트 노드 생성
+        let newTextNode = document.createTextNode('우유')
+        newNode.appendChild(newTextNode)
+        //화면에 출력하기 위해서.. 화면에 있는 노드에 추가해 준다..
+        let purchases = document.querySelector('#purchases')
+        purchases.appendChild(newNode)
+      })
+
+      btn3.addEventListener('click', function(){
+        let list = document.querySelector('#purchases')
+        let firstNode = list.firstElementChild
+        if(firstNode){
+          firstNode.parentNode.removeChild(firstNode)
+        }
+      })
+    })
+
+  
+  </script>
+</head>
+<body>
+  <button>두번째 드라마 찾기</button>
+  <button>마지막에 우유 추가하기</button>
+  <button>첫번째 상품 제거하기</button>
+
+  <p>구매 물품 목록</p>
+  <ul id="purchases">
+    <li>두부</li>
+    <li>계란</li>
+    <li>라면</li>
+  </ul>
+
+  <p>보고 싶은 드라마</p>
+  <ul id="drama">
+    <li>우리들의 블루스</li>
+    <li>나의 아저씨</li>
+    <li>응답하라 1988</li>
+  </ul>
+</body>
+</html>

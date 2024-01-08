@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let num = 100//number
+    let str = 'hello'//string 
+    let obj = {}//object
+    let arr = [num, str]//array - object
+
+    //함수를 변수에 할당.. 
+    let myFun = function() {
+      return 'i am function'
+    }
+
+    //함수를 배열의 요소로 할당
+    arr.push(obj)
+    arr.push(myFun)
+
+    //함수를 객체의 속성으로 할당.. 
+    obj.value1 = myFun
+    obj.fun1 = function() {
+      return "i am fun1"
+    }
+
+    document.write(`${myFun()}, ${arr[3]()}, ${obj.value1()}, ${arr[2].fun1()}`)
+
+    //함수의 결과값으로 함수가 반환.. 
+    function myFun2(){
+      document.write('<p>myFun call..</p>')
+      return function(){
+        document.write('<p>myFun - innerFun call..</p>')
+        return function(){
+          document.write('<p>myFun - innerFun - innerFun call..</p>')
+          return myFun
+        }
+      }
+    }
+    myFun2()()()()
+
+    let returnFun1 = myFun2()
+    //.................. 
+    let returnFuyn2 = returnFun1()
+    //............. 
+    returnFuyn2()
+
+    //위에까지는 함수가 데이터로 취급될 수 있다. 즉 변수로 핸들링할 수 있다..
+
+    //함수.. 동적으로 프로퍼티를 가질 수 있다..  ==> 함수가 객체로 이용.. 
+    function add(x, y){
+      add.result = x + y 
+      return x + y
+    }
+    let a = add(30, 40)
+    document.write(`<p>${a}, ${add.result}</p>`)
+
+    //함수 밖에서도 동적 property 추가 가능하다..
+    add.age = 10
+    document.write(`<p>${add.age}</p>`)
+  </script>
+</body>
+</html>
